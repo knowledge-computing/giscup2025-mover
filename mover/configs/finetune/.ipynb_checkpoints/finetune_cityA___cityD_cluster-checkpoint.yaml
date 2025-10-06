@@ -1,0 +1,37 @@
+OUTPUT: "./_runs/"
+TRAIN_CITIES: ['cityD']
+TEST_CITIES: ['cityD']
+EXP_NAME: "finetune_cityA___cityD__dual__cluster0"
+MODEL_NAME: "parallel"
+
+MODEL:
+  ADD_MOE_MODULE: True
+  HEAD: "dual_conditional"
+  PRETRAIN_WEIGHT: "./_runs/finetune_mobert___seq768__loc_profile__cityABCD__dual_conditional__cityA_v5/checkpoint/model_best.pth"
+  MOBERT:
+    DROPOUT: 0.1
+    ENCODER:
+      MAX_SEQ_LEN: 768
+      PRETRAIN_WEIGHT: ""
+      NUM_LAYERS: 12
+    DECODER:
+      NUM_LAYERS: 6
+    
+DATA:
+  MASK_TYPE: []
+  TAR_CLUSTER: 0
+  ADD_LOC_PROFILE: True
+
+TRAIN:
+  BATCH_SIZE: 32
+  EPOCHS: 100
+  WARMUP_EPOCHS: 10
+  BASE_LOSS: 'ce'
+  LOSSES: ['ce']
+  NUM_TRAIN_PER_BATCH: 0
+  NUM_VAL: 500
+  NUM_WORKERS: 8
+  BASE_LR: 1e-5
+
+SAVE_EVERY_EPOCH: 50
+USE_WANDB: False

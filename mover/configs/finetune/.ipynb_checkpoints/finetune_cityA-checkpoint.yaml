@@ -1,0 +1,37 @@
+OUTPUT: "./_runs/"
+TRAIN_CITIES: ['cityA']
+TEST_CITIES: ['cityA']
+EXP_NAME: "finetune_mobert___seq768__loc_profile__cityABCD__dual_conditional__cityA_v5"
+MODEL_NAME: "parallel"
+
+MODEL:
+  ADD_MOE_MODULE: True
+  HEAD: "dual_conditional"
+  PRETRAIN_WEIGHT: ""
+  MOBERT:
+    DROPOUT: 0.1
+    ENCODER:
+      MAX_SEQ_LEN: 768
+      PRETRAIN_WEIGHT: "/home/yaoyi/lin00786/work/Humob/mobert/_runs/pretrain_mobert__seq768__loc_profile__cityABCD_v5/checkpoint/model_epoch100.pth"
+      NUM_LAYERS: 12
+    DECODER:
+      NUM_LAYERS: 6
+    
+DATA:
+  MASK_TYPE: []
+  TAR_CLUSTER: -1
+  ADD_LOC_PROFILE: True
+
+TRAIN:
+  BATCH_SIZE: 32
+  EPOCHS: 100
+  WARMUP_EPOCHS: 10
+  BASE_LOSS: 'ce'
+  LOSSES: ['ce']
+  NUM_TRAIN_PER_BATCH: 0
+  NUM_VAL: 500
+  NUM_WORKERS: 8
+  BASE_LR: 1e-4
+
+SAVE_EVERY_EPOCH: 20
+USE_WANDB: False

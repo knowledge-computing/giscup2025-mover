@@ -1,0 +1,23 @@
+OUTPUT: "./_runs/"
+TRAIN_CITIES: ['cityA', 'cityB', 'cityC', 'cityD']
+TEST_CITIES: ['cityA', 'cityB', 'cityC', 'cityD']
+EXP_NAME: "pretrain_mobert__seq512__layer24__cityABCD1"
+
+MODEL:
+  MOBERT:
+      ENCODER:
+          MAX_SEQ_LEN: 512
+          NUM_LAYERS: 24
+          
+DATA:
+  MASK_TYPE: ["continuous_days", "random_days", "random_time", "random_dow", "random_trips"]
+  ADD_CITY_EMB: True
+  CITY_EMB_SIZE: 4
+  ADD_LOC_PROFILE: True
+    
+TRAIN:
+  BATCH_SIZE: 32
+  EPOCHS: 200
+  LOSSES: ['']
+
+USE_WANDB: True
