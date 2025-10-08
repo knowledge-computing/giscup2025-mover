@@ -2,7 +2,7 @@
 
 This is the Repo for our submission to [**ACM SIGSPATIAL Cup 2025: Human Mobility Prediction Challenge**](https://sigspatial2025.sigspatial.org/giscup/index.html)
 
-Our method **Mover** combines trip-aware segmentation, enriched location profiles, and cluster-based user adaptation.
+**Mover** combines trip-aware segmentation, enriched location profiles, and cluster-based user adaptation.
 
 ### 1) Data Settings
 Update dataset [ROOT] path in: ./datasets/builtin.py
@@ -31,8 +31,8 @@ Place Under:
 ./datasets/user_cluster/
 ```
 
-### 2) Download Model Weights
-- **Model Weights:** [Google Drive – Weights](https://drive.google.com/drive/folders/1kObdlzuYdBW8ZUpiPOsePWP49TJbNC3j?usp=drive_link)
+### 2) Download [Model Weights](https://drive.google.com/drive/folders/1kObdlzuYdBW8ZUpiPOsePWP49TJbNC3j?usp=drive_link)
+
 Place under:
 
 ```text
@@ -40,5 +40,8 @@ Place under:
 ```
 
 ### 3) Run Inference
+
+```
 bash ./_bash/inference.sh
+```
 
